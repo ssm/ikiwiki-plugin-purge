@@ -42,3 +42,30 @@ requests to empty your cache.
             return (purge);
         }
     }
+
+Verify that ikiwiki sends PURGE requests to varnish by committing a
+change in the wiki, and then look for those requests in the varnish
+log.
+
+    varnishncsa -d -q 'ReqMethod eq "PURGE"'
+
+Web server configuration
+-----------------------
+
+Add a long expiry time for your content in your web server. For apache
+httpd on Debian, the configuration would be:
+
+    $ a2enmod expiry
+
+to add the "expiry" module configuration, and then add to your
+virtual host configuration:
+
+    <Directory /path/to/your/wiki>
+      <IfModule mod_expires.c>
+        ExpiresActive On
+        ExpiresDefault "access plus 1 month"
+      </IfModule>
+    </Directory>
+
+If you use the ikiwiki CGI, you will need to add an exception for that
+path.
