@@ -1,7 +1,7 @@
 IkiWiki::Plugin::purge
 ======================
 
-IkiWiki plugin to send PURGE requests to remote http cache server
+IkiWiki plugin to send PURGE requests to remote HTTP cache server
 (like Varnish Cache)
 
 Installation
@@ -25,7 +25,7 @@ Varnish configuration
 ---------------------
 
 For Varnish, you'll need to add a handler for the non-standard "PURGE"
-method, and preferrably an ACL which restricts who can send these
+method, and preferably an ACL which restricts who can send these
 requests to empty your cache.
 
     acl origin_server {
