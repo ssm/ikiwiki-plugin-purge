@@ -1,6 +1,7 @@
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install ikiwiki
+env: PERL5LIB=/usr/share/perl5
 language: perl
 perl:
   - "5.18"
