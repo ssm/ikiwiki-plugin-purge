@@ -139,11 +139,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 use IkiWiki 3.00;
 
 sub import {
-    hook( type => "getsetup", id => "purge", call => \&getsetup );
-    hook( type => "changes",  id => "purge", call => \&purge );
+    hook( type => "getsetup", id => "purge", call => \&_getsetup );
+    hook( type => "changes",  id => "purge", call => \&_purge );
 }
 
-sub getsetup () {
+sub _getsetup () {
     return plugin => {
         safe    => 0,
         rebuild => 0,
@@ -171,7 +171,7 @@ sub getsetup () {
         };
 }
 
-sub purge (@) {
+sub _purge (@) {
     my @files = @_;
     return unless @files;
 
