@@ -238,11 +238,11 @@ sub _purge (@) {
     foreach my $url ( keys(%urls) ) {
 
         my $request = HTTP::Request->new( $config{purge_method} => $url );
-        chomp( my $request_as_string = $request->as_string);
-        debug( "purge request: " . $request_as_string);
+        chomp( my $request_as_string = $request->as_string );
+        debug( "purge request: " . $request_as_string );
 
         my $response = $ua->request($request);
-        debug( "purge response: " . $response->status_line);
+        debug( "purge response: " . $response->status_line );
 
     }
     exit 0;
