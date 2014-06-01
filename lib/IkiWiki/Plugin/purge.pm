@@ -140,7 +140,8 @@ use IkiWiki 3.00;
 
 sub import {
     hook( type => "getsetup", id => "purge", call => \&_getsetup );
-    hook( type => "changes",  id => "purge", call => \&_purge );
+    hook( type => "rendered", id => "purge", call => \&_purge );
+    hook( type => "delete",   id => "purge", call => \&_purge );
 }
 
 sub _getsetup () {
